@@ -24,6 +24,8 @@ RUN git clone https://github.com/boobkake22/ComfyUI-SamplingPlanner /comfyui/cus
 RUN git clone https://github.com/Larryvrh/ComfyUI-MiniMax-H3-Turbo /comfyui/custom_nodes/ComfyUI-MiniMax-H3-Turbo && cd /comfyui/custom_nodes/ComfyUI-MiniMax-H3-Turbo && (git checkout 55fee864dd7b2976b1c4ce3c3d5f7968f181409f 2>/dev/null || (git fetch origin 55fee864dd7b2976b1c4ce3c3d5f7968f181409f --depth=1 && git checkout 55fee864dd7b2976b1c4ce3c3d5f7968f181409f) || echo "WARN: commit 55fee864dd7b2976b1c4ce3c3d5f7968f181409f unreachable in https://github.com/Larryvrh/ComfyUI-MiniMax-H3-Turbo, falling back to default branch HEAD")
 RUN git clone https://github.com/boobkake22/ComfyUI-YAWSettingsImporter /comfyui/custom_nodes/ComfyUI-YAWSettingsImporter
 
+COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
+
 # download models into comfyui
 # copy all input data (like images or videos) into comfyui (uncomment and adjust if needed)
 # COPY input/ /comfyui/input/
