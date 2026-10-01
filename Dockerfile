@@ -26,6 +26,14 @@ RUN git clone https://github.com/boobkake22/ComfyUI-YAWSettingsImporter /comfyui
 
 COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 
+# Install custom-node dependencies into ComfyUI's runtime Python environment
+RUN uv pip install --python /opt/venv/bin/python opencv-python-headless && \
+    for r in /comfyui/custom_nodes/*/requirements.txt; do \
+        if [ -f "$r" ]; then \
+            uv pip install --python /opt/venv/bin/python -r "$r"; \
+        fi; \
+    done
+
 # download models into comfyui
 # copy all input data (like images or videos) into comfyui (uncomment and adjust if needed)
 # COPY input/ /comfyui/input/
