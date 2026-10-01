@@ -26,6 +26,7 @@ RUN git clone https://github.com/boobkake22/ComfyUI-YAWSettingsImporter /comfyui
 
 COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 
+RUN git clone https://github.com/alexopus/ComfyUI-Image-Saver /comfyui/custom_nodes/ComfyUI-Image-Saver
 # Install custom-node dependencies into ComfyUI's runtime Python environment
 RUN uv pip install --python /opt/venv/bin/python opencv-python-headless && \
     for r in /comfyui/custom_nodes/*/requirements.txt; do \
