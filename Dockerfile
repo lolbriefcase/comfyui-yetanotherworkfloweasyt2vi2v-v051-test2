@@ -26,6 +26,7 @@ RUN git clone https://github.com/boobkake22/ComfyUI-YAWSettingsImporter /comfyui
 
 RUN git clone https://github.com/alexopus/ComfyUI-Image-Saver /comfyui/custom_nodes/ComfyUI-Image-Saver
 RUN git clone https://github.com/JaredTherriault/ComfyUI-JNodes /comfyui/custom_nodes/ComfyUI-JNodes
+RUN git clone https://github.com/ComfyAssets/ComfyUI_Selectors.git /comfyui/custom_nodes/ComfyUI_Selectors
 
 COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 # Install custom-node dependencies into ComfyUI's runtime Python environment
