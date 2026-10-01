@@ -25,6 +25,7 @@ RUN git clone https://github.com/Larryvrh/ComfyUI-MiniMax-H3-Turbo /comfyui/cust
 RUN git clone https://github.com/boobkake22/ComfyUI-YAWSettingsImporter /comfyui/custom_nodes/ComfyUI-YAWSettingsImporter
 
 RUN git clone https://github.com/alexopus/ComfyUI-Image-Saver /comfyui/custom_nodes/ComfyUI-Image-Saver
+RUN git clone https://github.com/JaredTherriault/ComfyUI-JNodes /comfyui/custom_nodes/ComfyUI-JNodes
 
 COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 # Install custom-node dependencies into ComfyUI's runtime Python environment
