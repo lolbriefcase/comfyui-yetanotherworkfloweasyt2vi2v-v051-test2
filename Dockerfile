@@ -45,3 +45,6 @@ RUN uv pip install --python /opt/venv/bin/python opencv-python-headless && \
 
 # user-provided inputs override the auto-generated placeholders above.
 RUN wget --progress=dot:giga -O '/comfyui/input/example.png' "https://cool-anteater-319.convex.cloud/api/storage/40fb84bc-9797-477b-b6e8-1a19c2fe9295"
+
+RUN echo "=== SEARCHING FOR MiniMaxH3Resolutions ===" && \
+    grep -R -n -B 3 -A 8 "MiniMaxH3Resolutions" /comfyui/custom_nodes/ || true
