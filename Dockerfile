@@ -28,6 +28,8 @@ RUN git clone https://github.com/alexopus/ComfyUI-Image-Saver /comfyui/custom_no
 RUN git clone https://github.com/JaredTherriault/ComfyUI-JNodes /comfyui/custom_nodes/ComfyUI-JNodes
 RUN git clone https://github.com/ComfyAssets/ComfyUI_Selectors.git /comfyui/custom_nodes/ComfyUI_Selectors
 
+RUN grep -R 'Scheduler Selector' /comfyui/custom_nodes/ || true
+
 COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 # Install custom-node dependencies into ComfyUI's runtime Python environment
 RUN uv pip install --python /opt/venv/bin/python opencv-python-headless && \
