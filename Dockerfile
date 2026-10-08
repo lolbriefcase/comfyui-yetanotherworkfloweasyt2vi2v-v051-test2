@@ -27,6 +27,9 @@ RUN git clone https://github.com/boobkake22/ComfyUI-YAWSettingsImporter /comfyui
 RUN git clone https://github.com/alexopus/ComfyUI-Image-Saver /comfyui/custom_nodes/ComfyUI-Image-Saver
 RUN git clone https://github.com/JaredTherriault/ComfyUI-JNodes /comfyui/custom_nodes/ComfyUI-JNodes
 RUN git clone https://github.com/ComfyAssets/ComfyUI_Selectors.git /comfyui/custom_nodes/ComfyUI_Selectors
+RUN git clone https://github.com/mickmumpitz/ComfyUI-Mickmumpitz-Nodes /comfyui/custom_nodes/ComfyUI-Mickmumpitz-Nodes && \
+    cd /comfyui/custom_nodes/ComfyUI-Mickmumpitz-Nodes && \
+    git checkout e3df7e1
 
 RUN grep -R 'Scheduler Selector' /comfyui/custom_nodes/ || true
 
