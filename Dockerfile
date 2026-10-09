@@ -6,32 +6,28 @@ FROM runpod/worker-comfyui:5.10.0-base
 # pass via: docker buildx build --secret id=hf_token,env=HF_TOKEN .
 
 # install custom nodes into comfyui
-RUN git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts /comfyui/custom_nodes/ComfyUI-Custom-Scripts && cd /comfyui/custom_nodes/ComfyUI-Custom-Scripts && (git checkout f2838ed5e59de4d73cde5c98354b87a8d3200190 2>/dev/null || (git fetch origin f2838ed5e59de4d73cde5c98354b87a8d3200190 --depth=1 && git checkout f2838ed5e59de4d73cde5c98354b87a8d3200190) || echo "WARN: commit f2838ed5e59de4d73cde5c98354b87a8d3200190 unreachable in https://github.com/pythongosssss/ComfyUI-Custom-Scripts, falling back to default branch HEAD")
-RUN git clone https://github.com/ClownsharkBatwing/RES4LYF /comfyui/custom_nodes/RES4LYF && cd /comfyui/custom_nodes/RES4LYF && (git checkout 46de917234f9fef3f2ab411c41e07aa3c633f4f7 2>/dev/null || (git fetch origin 46de917234f9fef3f2ab411c41e07aa3c633f4f7 --depth=1 && git checkout 46de917234f9fef3f2ab411c41e07aa3c633f4f7) || echo "WARN: commit 46de917234f9fef3f2ab411c41e07aa3c633f4f7 unreachable in https://github.com/ClownsharkBatwing/RES4LYF, falling back to default branch HEAD")
-RUN git clone https://github.com/yolain/ComfyUI-Easy-Use /comfyui/custom_nodes/ComfyUI-Easy-Use && cd /comfyui/custom_nodes/ComfyUI-Easy-Use && (git checkout b6deb5f5155fd400b20cce7f8644a61efdcbe098 2>/dev/null || (git fetch origin b6deb5f5155fd400b20cce7f8644a61efdcbe098 --depth=1 && git checkout b6deb5f5155fd400b20cce7f8644a61efdcbe098) || echo "WARN: commit b6deb5f5155fd400b20cce7f8644a61efdcbe098 unreachable in https://github.com/yolain/ComfyUI-Easy-Use, falling back to default branch HEAD")
-RUN git clone https://github.com/rgthree/rgthree-comfy /comfyui/custom_nodes/rgthree-comfy && cd /comfyui/custom_nodes/rgthree-comfy && (git checkout c5ffa43de4ddb17244626a65a30700a05dd6b67d 2>/dev/null || (git fetch origin c5ffa43de4ddb17244626a65a30700a05dd6b67d --depth=1 && git checkout c5ffa43de4ddb17244626a65a30700a05dd6b67d) || echo "WARN: commit c5ffa43de4ddb17244626a65a30700a05dd6b67d unreachable in https://github.com/rgthree/rgthree-comfy, falling back to default branch HEAD")
-RUN git clone https://github.com/boobkake22/ComfyUI-FilmGrainLTXV /comfyui/custom_nodes/ComfyUI-FilmGrainLTXV && cd /comfyui/custom_nodes/ComfyUI-FilmGrainLTXV && (git checkout d0f1c8e912dc2dae6f41d51c9188f3fb074f4edb 2>/dev/null || (git fetch origin d0f1c8e912dc2dae6f41d51c9188f3fb074f4edb --depth=1 && git checkout d0f1c8e912dc2dae6f41d51c9188f3fb074f4edb) || echo "WARN: commit d0f1c8e912dc2dae6f41d51c9188f3fb074f4edb unreachable in https://github.com/boobkake22/ComfyUI-FilmGrainLTXV, falling back to default branch HEAD")
-RUN comfy node install --exit-on-fail color-correct-gpu@0.1.0 --mode remote || (echo "WARN: color-correct-gpu@0.1.0 unavailable in registry, falling back to latest" >&2 && comfy node install --exit-on-fail color-correct-gpu --mode remote)
-RUN git clone https://github.com/boobkake22/ComfyUI-QuickWatermark /comfyui/custom_nodes/ComfyUI-QuickWatermark && cd /comfyui/custom_nodes/ComfyUI-QuickWatermark && (git checkout 95fcfd6614d2afc1b9a72c8d80ce02fb6b704bc0 2>/dev/null || (git fetch origin 95fcfd6614d2afc1b9a72c8d80ce02fb6b704bc0 --depth=1 && git checkout 95fcfd6614d2afc1b9a72c8d80ce02fb6b704bc0) || echo "WARN: commit 95fcfd6614d2afc1b9a72c8d80ce02fb6b704bc0 unreachable in https://github.com/boobkake22/ComfyUI-QuickWatermark, falling back to default branch HEAD")
-RUN git clone https://github.com/M1kep/ComfyLiterals /comfyui/custom_nodes/ComfyLiterals && cd /comfyui/custom_nodes/ComfyLiterals && (git checkout bdddb08ca82d90d75d97b1d437a652e0284a32ac 2>/dev/null || (git fetch origin bdddb08ca82d90d75d97b1d437a652e0284a32ac --depth=1 && git checkout bdddb08ca82d90d75d97b1d437a652e0284a32ac) || echo "WARN: commit bdddb08ca82d90d75d97b1d437a652e0284a32ac unreachable in https://github.com/M1kep/ComfyLiterals, falling back to default branch HEAD")
-RUN git clone https://github.com/boobkake22/ComfyUI-SimpleSwitch /comfyui/custom_nodes/ComfyUI-SimpleSwitch && cd /comfyui/custom_nodes/ComfyUI-SimpleSwitch && (git checkout 13dffd915fd85f3fe00cf47eb1a8cf40177625a4 2>/dev/null || (git fetch origin 13dffd915fd85f3fe00cf47eb1a8cf40177625a4 --depth=1 && git checkout 13dffd915fd85f3fe00cf47eb1a8cf40177625a4) || echo "WARN: commit 13dffd915fd85f3fe00cf47eb1a8cf40177625a4 unreachable in https://github.com/boobkake22/ComfyUI-SimpleSwitch, falling back to default branch HEAD")
-RUN git clone https://github.com/kijai/ComfyUI-KJNodes /comfyui/custom_nodes/ComfyUI-KJNodes && cd /comfyui/custom_nodes/ComfyUI-KJNodes && (git checkout a6b867b63a29ca48ddb15c589e17a9f2d8530d57 2>/dev/null || (git fetch origin a6b867b63a29ca48ddb15c589e17a9f2d8530d57 --depth=1 && git checkout a6b867b63a29ca48ddb15c589e17a9f2d8530d57) || echo "WARN: commit a6b867b63a29ca48ddb15c589e17a9f2d8530d57 unreachable in https://github.com/kijai/ComfyUI-KJNodes, falling back to default branch HEAD")
-RUN comfy node install --exit-on-fail comfyui-videohelpersuite@1.7.9 || (echo "WARN: comfyui-videohelpersuite@1.7.9 unavailable in registry, falling back to latest" >&2 && comfy node install --exit-on-fail comfyui-videohelpersuite)
-RUN git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation /comfyui/custom_nodes/ComfyUI-Frame-Interpolation && cd /comfyui/custom_nodes/ComfyUI-Frame-Interpolation && (git checkout a969c01dbccd9e5510641be04eb51fe93f6bfc3d 2>/dev/null || (git fetch origin a969c01dbccd9e5510641be04eb51fe93f6bfc3d --depth=1 && git checkout a969c01dbccd9e5510641be04eb51fe93f6bfc3d) || echo "WARN: commit a969c01dbccd9e5510641be04eb51fe93f6bfc3d unreachable in https://github.com/Fannovel16/ComfyUI-Frame-Interpolation, falling back to default branch HEAD")
-RUN git clone https://github.com/Smirnov75/ComfyUI-mxToolkit /comfyui/custom_nodes/ComfyUI-mxToolkit && cd /comfyui/custom_nodes/ComfyUI-mxToolkit && (git checkout 7f7a0e584f12078a1c589645d866ae96bad0cc35 2>/dev/null || (git fetch origin 7f7a0e584f12078a1c589645d866ae96bad0cc35 --depth=1 && git checkout 7f7a0e584f12078a1c589645d866ae96bad0cc35) || echo "WARN: commit 7f7a0e584f12078a1c589645d866ae96bad0cc35 unreachable in https://github.com/Smirnov75/ComfyUI-mxToolkit, falling back to default branch HEAD")
+RUN git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts /comfyui/custom_nodes/ComfyUI-Custom-Scripts
+RUN git clone https://github.com/ClownsharkBatwing/RES4LYF /comfyui/custom_nodes/RES4LYF
+RUN git clone https://github.com/yolain/ComfyUI-Easy-Use /comfyui/custom_nodes/ComfyUI-Easy-Use
+RUN git clone https://github.com/rgthree/rgthree-comfy /comfyui/custom_nodes/rgthree-comfy
+RUN git clone https://github.com/boobkake22/ComfyUI-FilmGrainLTXV /comfyui/custom_nodes/ComfyUI-FilmGrainLTXV
+RUN comfy node install --exit-on-fail color-correct-gpu --mode remote
+RUN git clone https://github.com/boobkake22/ComfyUI-QuickWatermark /comfyui/custom_nodes/ComfyUI-QuickWatermark
+RUN git clone https://github.com/M1kep/ComfyLiterals /comfyui/custom_nodes/ComfyLiterals
+RUN git clone https://github.com/boobkake22/ComfyUI-SimpleSwitch /comfyui/custom_nodes/ComfyUI-SimpleSwitch
+RUN git clone https://github.com/kijai/ComfyUI-KJNodes /comfyui/custom_nodes/ComfyUI-KJNodes
+RUN comfy node install --exit-on-fail comfyui-videohelpersuite
+RUN git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation /comfyui/custom_nodes/ComfyUI-Frame-Interpolation
+RUN git clone https://github.com/Smirnov75/ComfyUI-mxToolkit /comfyui/custom_nodes/ComfyUI-mxToolkit
 RUN git clone https://github.com/boobkake22/ComfyUI-WanResolutions /comfyui/custom_nodes/ComfyUI-WanResolutions
-RUN git clone https://github.com/boobkake22/ComfyUI-SamplingPlanner /comfyui/custom_nodes/ComfyUI-SamplingPlanner && cd /comfyui/custom_nodes/ComfyUI-SamplingPlanner && (git checkout 0db13e5d0b3049c0d94f0de66252452e511fcaf8 2>/dev/null || (git fetch origin 0db13e5d0b3049c0d94f0de66252452e511fcaf8 --depth=1 && git checkout 0db13e5d0b3049c0d94f0de66252452e511fcaf8) || echo "WARN: commit 0db13e5d0b3049c0d94f0de66252452e511fcaf8 unreachable in https://github.com/boobkake22/ComfyUI-SamplingPlanner, falling back to default branch HEAD")
-RUN git clone https://github.com/Larryvrh/ComfyUI-MiniMax-H3-Turbo /comfyui/custom_nodes/ComfyUI-MiniMax-H3-Turbo && cd /comfyui/custom_nodes/ComfyUI-MiniMax-H3-Turbo && (git checkout 55fee864dd7b2976b1c4ce3c3d5f7968f181409f 2>/dev/null || (git fetch origin 55fee864dd7b2976b1c4ce3c3d5f7968f181409f --depth=1 && git checkout 55fee864dd7b2976b1c4ce3c3d5f7968f181409f) || echo "WARN: commit 55fee864dd7b2976b1c4ce3c3d5f7968f181409f unreachable in https://github.com/Larryvrh/ComfyUI-MiniMax-H3-Turbo, falling back to default branch HEAD")
+RUN git clone https://github.com/boobkake22/ComfyUI-SamplingPlanner /comfyui/custom_nodes/ComfyUI-SamplingPlanner
+RUN git clone https://github.com/Larryvrh/ComfyUI-MiniMax-H3-Turbo /comfyui/custom_nodes/ComfyUI-MiniMax-H3-Turbo
 RUN git clone https://github.com/boobkake22/ComfyUI-YAWSettingsImporter /comfyui/custom_nodes/ComfyUI-YAWSettingsImporter
 
 RUN git clone https://github.com/alexopus/ComfyUI-Image-Saver /comfyui/custom_nodes/ComfyUI-Image-Saver
 RUN git clone https://github.com/JaredTherriault/ComfyUI-JNodes /comfyui/custom_nodes/ComfyUI-JNodes
 RUN git clone https://github.com/ComfyAssets/ComfyUI_Selectors.git /comfyui/custom_nodes/ComfyUI_Selectors
-RUN git clone https://github.com/mickmumpitz/ComfyUI-Mickmumpitz-Nodes /comfyui/custom_nodes/ComfyUI-Mickmumpitz-Nodes && \
-    cd /comfyui/custom_nodes/ComfyUI-Mickmumpitz-Nodes && \
-    git checkout e3df7e1
-
-RUN grep -R 'Scheduler Selector' /comfyui/custom_nodes/ || true
+RUN git clone https://github.com/mickmumpitz/ComfyUI-Mickmumpitz-Nodes /comfyui/custom_nodes/ComfyUI-Mickmumpitz-Nodes
 
 COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 # Install custom-node dependencies into ComfyUI's runtime Python environment
@@ -49,4 +45,5 @@ RUN uv pip install --python /opt/venv/bin/python opencv-python-headless && \
 # user-provided inputs override the auto-generated placeholders above.
 RUN wget --progress=dot:giga -O '/comfyui/input/example.png' "https://cool-anteater-319.convex.cloud/api/storage/40fb84bc-9797-477b-b6e8-1a19c2fe9295"
 
+# list every custom node and show which ones fail to load (look for IMPORT FAILED in the build log)
 RUN /opt/venv/bin/python /comfyui/main.py --cpu --quick-test-for-ci 2>&1 | tee /tmp/nodecheck.log
